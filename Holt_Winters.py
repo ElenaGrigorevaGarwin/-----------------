@@ -12,7 +12,7 @@ for column in df.columns[1:]:
     # При необходимости исправьте нулевые значения
     series = series.replace(0, 1)
 
-    model = HWES(series, seasonal_periods=12, trend='additive', seasonal='add')
+    model = HWES(series, seasonal_periods=12, trend='additive', seasonal='mul')
     fitted = model.fit()
 
     # Создание временного ряда прогнозов
@@ -27,4 +27,4 @@ for column in df.columns[1:]:
     sales_forecast[column] = forecast_df['Прогноз']
 
 # Сохранение DataFrame с результатами в Excel
-sales_forecast.to_excel('Прогнозы_Holt-Winters.xlsx')
+sales_forecast.to_excel('result/Прогнозы_Holt-Winters_AdditMul.xlsx')

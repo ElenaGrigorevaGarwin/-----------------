@@ -34,4 +34,4 @@ start_date = df.index[-1] + pd.DateOffset(months=1)
 predictions.index = pd.date_range(start=start_date, periods=12, freq='M')
 
 # Сохранение прогнозов в Excel
-predictions.to_excel("прогнозы_SARIMA111.xlsx")
+predictions.to_excel("result/прогнозы_SARIMA111.xlsx")
