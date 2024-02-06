@@ -1,4 +1,5 @@
 # модель с комбинированным ядром вариант 3
+# Суммарная модель
 import GPy
 import numpy as np
 import pandas as pd
