@@ -31,5 +31,5 @@ for department in df.columns:
 
   predictions[department] = y_pred[-12:]  # Берем только последние 12 прогнозов
 
-
+# Выводим прогноз в таблицу
 predictions.to_excel("result/прогнозы_GP_Combo_3.xlsx")
