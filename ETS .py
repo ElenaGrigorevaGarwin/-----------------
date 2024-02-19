@@ -9,7 +9,7 @@ df['Дата'] = pd.to_datetime(df['Дата'], errors='coerce')
 df.set_index('Дата', inplace=True)
 
 # Установите частоту 'M' (ежемесячно) явно
-df.index = pd.date_range(df.index[0], periods=len(df), freq='M')
+df.index = pd.date_range(df.index[0], periods=len(df), freq='MS')
 # Создайте пустой DataFrame для прогнозов
 predictions = pd.DataFrame()
 for department in df.columns:
@@ -24,6 +24,6 @@ for department in df.columns:
 
 # Добавление индекса (месяц и год) в DataFrame
 start_date = df.index[-1] + pd.DateOffset(months=1)
-predictions.index = pd.date_range(start=start_date, periods=12, freq='M')
+predictions.index = pd.date_range(start=start_date, periods=12, freq='MS')
 # Сохранение прогнозов в Excel
-predictions.to_excel("result/прогнозы_ETS.xlsx")
+predictions.to_excel("result/Прогнозы_ETS.xlsx")

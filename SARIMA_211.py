@@ -1,4 +1,4 @@
-# SARIMA подбор критериев(111, 211)
+# SARIMA 211
 import pandas as pd
 import numpy as np
 import statsmodels.api as sm
@@ -19,7 +19,7 @@ for department in df.columns:
     sales_data = df[department]
 
     # Построение SARIMA модели
-    model = sm.tsa.SARIMAX(sales_data, order=(1, 1, 1), seasonal_order=(1, 1, 1, 12))
+    model = sm.tsa.SARIMAX(sales_data, order=(2, 1, 1), seasonal_order=(2, 1, 1, 12))
     results = model.fit()
 
     # Прогноз на следующий год (12 месяцев)
@@ -34,4 +34,4 @@ start_date = df.index[-1] + pd.DateOffset(months=1)
 predictions.index = pd.date_range(start=start_date, periods=12, freq='M')
 
 # Сохранение прогнозов в Excel
-predictions.to_excel("result/прогнозы_SARIMA111.xlsx")
+predictions.to_excel("result/прогнозы_SARIMA_211.xlsx")

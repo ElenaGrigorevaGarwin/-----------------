@@ -30,4 +30,4 @@ for department in df.columns:
   predictions[department] = y_pred[-12:]  # Берем только последние 12 прогнозов
 
 
-predictions.to_excel("result/прогнозы_GP_Mul.xlsx")
+predictions.to_excel("result/Прогнозы_GP_Mul.xlsx")

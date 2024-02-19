@@ -8,7 +8,7 @@ df = pd.read_excel('Факт отгрузок.xlsx')
 df['Дата'] = pd.to_datetime(df['Дата'])
 df.set_index('Дата', inplace=True)
 
-predictions = pd.DataFrame(index=pd.date_range(start=df.index[-1] + pd.DateOffset(months=1), periods=12, freq='M'))
+predictions = pd.DataFrame(index=pd.date_range(start=df.index[-1] + pd.DateOffset(months=1), periods=12, freq='MS'))
 
 for department in df.columns:
   series = df[department].values.reshape(-1, 1)
@@ -30,4 +30,4 @@ for department in df.columns:
   predictions[department] = y_pred[-12:]  # Берем только последние 12 прогнозов
 
 
-predictions.to_excel("result/прогнозы_GP_Ex_Per.xlsx")
+predictions.to_excel("result/Прогнозы_GP_Ex_Per.xlsx")
