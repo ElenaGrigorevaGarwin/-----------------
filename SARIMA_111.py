@@ -31,7 +31,7 @@ for department in df.columns:
 
 # Добавление индекса (месяц и год) в DataFrame
 start_date = df.index[-1] + pd.DateOffset(months=1)
-predictions.index = pd.date_range(start=start_date, periods=12, freq='M')
+predictions.index = pd.date_range(start=start_date, periods=12, freq='MS')
 
 # Сохранение прогнозов в Excel
 predictions.to_excel("result/прогнозы_SARIMA_111.xlsx")

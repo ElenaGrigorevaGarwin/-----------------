@@ -16,9 +16,8 @@ for department in df.columns:
     sales_data = df[department]
     ets_model = sm.tsa.statespace.ExponentialSmoothing(sales_data,
                                                        trend='add',  # 'add'  и 'multiplicative'
-                                                       seasonal=4, # 4 и 12   
-                                                       initialization_method= 'concentrated',   # метод инициализации - 'estimated', 'heuristic', 'concentrated'
-                                                       damped_trend=True).fit()     # затухающий тренд - сделать прогноз и без него
+                                                       seasonal=12, # 4 и 12   
+                                                       initialization_method= 'concentrated').fit()     # затухающий тренд - сделать прогноз и без него
     forecast_values = ets_model.forecast(12)
     predictions[department] = forecast_values
 
@@ -26,4 +25,4 @@ for department in df.columns:
 start_date = df.index[-1] + pd.DateOffset(months=1)
 predictions.index = pd.date_range(start=start_date, periods=12, freq='MS')
 # Сохранение прогнозов в Excel
-predictions.to_excel("result/Прогнозы_ETS.xlsx")
+predictions.to_excel("result/Прогнозы_ETS_CA12.xlsx")

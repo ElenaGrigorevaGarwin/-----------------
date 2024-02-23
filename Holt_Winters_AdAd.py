@@ -4,6 +4,7 @@ from statsmodels.tsa.holtwinters import ExponentialSmoothing as HWES
 
 df = pd.read_excel('Факт отгрузок.xlsx')
 df['Дата'] = pd.to_datetime(df['Дата'])
+
 sales_forecast = pd.DataFrame()
 
 for column in df.columns[1:]:
@@ -21,7 +22,7 @@ for column in df.columns[1:]:
     # Создание DataFrame с прогнозами для текущего отдела
     forecast_df = pd.DataFrame({
         'Прогноз': forecast_values.values,
-    }, index=pd.date_range(start=df['Дата'].max() + pd.DateOffset(months=1), periods=12, freq='M'))
+    }, index=pd.date_range(start=df['Дата'].max() + pd.DateOffset(months=1), periods=12, freq='MS'))
 
     # Добавление столбца с прогнозами в общий DataFrame
     sales_forecast[column] = forecast_df['Прогноз']

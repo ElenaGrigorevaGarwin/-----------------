@@ -1,9 +1,9 @@
+# Преобразование файла с продажами для моделей прогноза 
 import os
 import pandas as pd
 
 df = pd.read_excel('Факт отгрузок.xlsx')
 
-df.columns = df.columns[:1].tolist() + df.columns[1:].map(lambda x: x.strftime('%d.%m.%Y')).tolist()
 
 df_transposed = df.T  # Транспонирование таблицы
 df_transposed.columns = df_transposed.iloc[0]  # Сделать первую строку заголовком
